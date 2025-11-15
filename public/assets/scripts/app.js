@@ -1,5 +1,88 @@
 
+let obrasChartInstance = null;
+const CHAVE_DE_AGRUPAMENTO = 'artista'; 
+async function carregarGraficoPorCategoria(categoria) {
+    
+    const COLECAO_ENDPOINT = `http://localhost:3000/${categoria}`;
+    
+    try {
+        const response = await fetch(COLECAO_ENDPOINT);
+        if (!response.ok) {
+            throw new Error(`Erro HTTP! Status: ${response.status} ao buscar ${categoria}`);
+        }
+        const data = await response.json();
+        const contagemPorArtista = data.reduce((acc, item) => {
+            const artista = item[CHAVE_DE_AGRUPAMENTO] || 'Artista Desconhecido';
+            acc[artista] = (acc[artista] || 0) + 1;
+            return acc;
+        }, {});
 
+        const labels = Object.keys(contagemPorArtista);
+        const chartData = Object.values(contagemPorArtista);
+        renderizarGrafico(labels, chartData, categoria);
+
+    } catch (error) {
+        console.error("Erro ao carregar dados para o gráfico:", error);
+        const chartContainer = document.getElementById('obrasPorArtistaChart').closest('div');
+        if (chartContainer) {
+             chartContainer.innerHTML = `<p class="alert alert-danger mt-3">Erro ao carregar dados da categoria **${categoria}**.</p>`;
+        }
+    }
+}
+function renderizarGrafico(labels, data, categoria) {
+    const ctx = document.getElementById('obrasPorArtistaChart');
+    if (obrasChartInstance) {
+        obrasChartInstance.destroy();
+    }
+    const tituloMapa = categoria.charAt(0).toUpperCase() + categoria.slice(1);
+    obrasChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: `Total de Itens Publicados (${tituloMapa})`,
+                data: data,
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Quantidade de Itens' },
+                    ticks: {
+                        callback: function(value) {if (value % 1 === 0) {return value;}}
+                    }
+                },
+                x: {
+                    title: { display: true, text: 'Artista/Autor' }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: `Contagem por Artista na Categoria: ${tituloMapa}`
+                }
+            }
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', () => {
+    carregarHome();
+    configurarFormularioPublicacao();
+    configurarFormularioEdicao();
+    const filtro = document.getElementById('filtroCategoria');
+    if (filtro) {
+        carregarGraficoPorCategoria(filtro.value); 
+        filtro.addEventListener('change', (e) => {
+            carregarGraficoPorCategoria(e.target.value);
+        });
+    }
+});
+const atualizarGraficoObras = () => carregarGraficoPorCategoria('obras');
 function configurarFormularioPublicacao() {
     const btnPublicarCabecalho = document.querySelector('.header-actions .btn-primary');
     const secaoFormulario = document.getElementById('publicar-obra-form');

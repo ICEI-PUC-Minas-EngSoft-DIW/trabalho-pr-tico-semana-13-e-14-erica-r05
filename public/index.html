@@ -63,7 +63,16 @@
                         <h2>Bem-vindo de volta, Artista!</h2>
                         <p>Explore novas obras, conecte-se com outros artistas e compartilhe sua criatividade.</p>
                     </div>
-                    <--grafico!->
+                    <section class="section mt-5 p-4 border rounded shadow-sm" style="width: 990px;height: 400px;">
+                        <h2 style="font-size: 1.2rem;">📊 Distribuição de Conteúdo por Categoria</h2>
+                        <div class="mb-3">
+                            <label for="filtroCategoria" class="form-label fw-bold" style="font-size: 1.4rem;">Selecione a Categoria:</label>
+                            <select id="filtroCategoria" class="form-select w-auto; " style="font-size: 0.9rem;max-width: 990px;">
+                                <option value="obras" selected>Minhas Obras (Desenhos)</option>
+                                <option value="albuns">Álbuns Musicais</option>
+                                <option value="pinturas">Pinturas Clássicas</option>
+                            </select>
+                        </div>
                         <div style="width: 100%; max-width: 400px; height: 300px; margin: auto;">
                             <canvas id="obrasPorArtistaChart"></canvas>
                         </div>

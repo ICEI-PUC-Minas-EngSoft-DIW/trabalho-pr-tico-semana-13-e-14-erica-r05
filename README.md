@@ -16,8 +16,8 @@ Sugerimos o uso das seguintes ferramentas acessíveis: [FullCalendar](https://fu
 
 **Print da tela com a implementação**
 
-<< Coloque aqui uma breve explicação da implementação feita nessa etapa>>
+<< Eu implementei um gráfico que analisa quantidade de postagens dos artistas por categoria, por exemplo: em albuns favoritos tem um album do artista Djavan >>
 
-<<  COLOQUE A IMAGEM TELA 1 AQUI >>
+<<  ![print do grafico sem a adição ou remoção de nenhuma postagem na categoria de albuns favoritos](public/prints/print01.png) >>
 
-<<  COLOQUE A IMAGEM TELA 2 AQUI >>
+<< ![Print do Grafico apos a adição de um novo album de um novo artista hipotético](public/prints/print02.png) >>
