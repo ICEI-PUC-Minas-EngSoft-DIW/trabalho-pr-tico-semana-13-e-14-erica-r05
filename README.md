@@ -9,15 +9,17 @@ Sugerimos o uso das seguintes ferramentas acessíveis: [FullCalendar](https://fu
 
 ## Informações do trabalho
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome: Erica Regina da Silva Martins
+- Matricula: 00905541
+- Proposta de projeto escolhida: Pessoas e produções
+- Breve descrição sobre seu projeto: Meu projeto é criar uma rede que sirva de portifolio online para artistas, viabilizar a criação de comunidades para a disseminação de diferentes formas de arte, epor meio de recomendações das comunidades disseminar curiosidades sobre obras de artistas famosos, vivos ou não. Além disso, por meio do compartilhamento de albuns de musicas, garantir a identificação de gostos em comum.
 
 **Print da tela com a implementação**
 
-<< Eu implementei um gráfico que analisa quantidade de postagens dos artistas por categoria, por exemplo: em albuns favoritos tem um album do artista Djavan >>
+![Print da implementação](public/prints/print03.png)
+
+<< Eu implementei um gráfico que analisa quantidade de postagens por categoria, por exemplo: na categoria de albuns musicais favoritos tem um album do artista Djavan postado >>
 
 <<  ![print do grafico sem a adição ou remoção de nenhuma postagem na categoria de albuns favoritos](public/prints/print01.png) >>
 
-<< ![Print do Grafico apos a adição de um novo album de um novo artista hipotético](public/prints/print02.png) >>
+<< ![Print do Grafico apos a adição de um novo album de um novo artista hipotético](public/prints/print02.png)>>
